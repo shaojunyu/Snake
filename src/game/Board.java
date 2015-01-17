@@ -7,7 +7,7 @@ import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 
 import javax.swing.JFrame;
-
+//Board is to define the area in which the snake moves
 public class Board extends Frame{
 	public static final int Width = 350;
 	public static final int Height = 300;
@@ -18,6 +18,7 @@ public class Board extends Frame{
 	public static final int XOffset = (Width - Column*TileWidth)/2;
 	public static final int YOffset = (Height - Row*TileHeight)/2;
 	
+	//a snake game have three basic components-- a snake , food , update thread
 	private Snake mSnake;
 	private Updater mUpdater;
 	private Food mFood;
@@ -96,6 +97,7 @@ public class Board extends Frame{
 
 }
 
+//a supplementary class to handle window event, mainly for closing the window and kill the thread
 class windowHandler extends WindowAdapter{
 	public void windowClosing(WindowEvent e){
 		System.exit(0);

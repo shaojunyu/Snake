@@ -1,7 +1,7 @@
 package game;
 
 import java.util.Random;
-
+//food can be seen as a part of body, so food class can extend Body class
 public class Food extends Body{
 
 	public Food() {

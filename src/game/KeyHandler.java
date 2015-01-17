@@ -3,6 +3,7 @@ package game;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 
+//this class is to handle key event from keyboard and to control the snake
 public class KeyHandler extends KeyAdapter{
 	private Snake mSnake;
 	private Board mBoard;

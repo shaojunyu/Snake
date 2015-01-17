@@ -1,5 +1,5 @@
 package game;
-
+//this class is designed to update the Snake and the UI once per 300ms
 public class Updater extends Thread {
 	private Board mBoard;
 	private Snake mSnake;

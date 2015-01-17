@@ -9,10 +9,12 @@ enum DIRECTION{
 public class Snake {
 	private List<Body> mBody;
 	private DIRECTION mDirection;
+	
 	public Snake() {
 		mBody = new ArrayList<Body>();
 		reset();
 	}
+	
 	public void reset(){
 		mBody.clear();
 		mBody.add(new Body(7,4));
@@ -21,6 +23,8 @@ public class Snake {
 		mBody.add(new Body(7,1));
 		mDirection = DIRECTION.RIGHT;
 	}
+	
+	//change the moving direction of snake
 	public void changeDirection(DIRECTION d){
 		switch(d)
 		{
@@ -47,6 +51,8 @@ public class Snake {
 		}
 		mDirection = d;
 	}
+	
+	//how to move
 	public void move(Board b){
 		Body head;
 		Body headold = mBody.get(0);
@@ -69,6 +75,7 @@ public class Snake {
 			break;
 		}
 		
+		//eat food
 		Food f = b.getFood();
 		if(f.row == head.row && f.col == head.col){
 			mBody.add(0,f);
@@ -79,17 +86,23 @@ public class Snake {
 			mBody.add(0,head);
 		}
 		
+		//check collision
 		if(checkBodyCollision() || checkBoundCollision(b)){
 			b.setState(STATE.DEAD);
 		}
 	}
+	
+	//get a part of snake
 	public Body getBody(int index){
 		return mBody.get(index);
 	}
+	
+	//get  the length of snake 
 	public int getLength(){
 		return mBody.size();
 	}
 	
+	//check if the snake have bitten itself
 	public boolean checkBodyCollision(){
 		Body head = getBody(0);
 		for(int i=1;i<getLength();i++){
@@ -99,6 +112,8 @@ public class Snake {
 		}
 		return false;
 	}
+	
+	//check if the snake have bump into the bound
 	public boolean checkBoundCollision(Board b){
 		Body head = getBody(0);
 		if(head.col >= b.Column || head.col < 0 || head.row >= b.Row || head.row < 0){
@@ -109,7 +124,9 @@ public class Snake {
 
 }
 
-
+//this class  is designed to define a part of snake 
+//each part of snake can be seen as a RECT
+//and we should know the position of each RECT
 class Body{
 	public int row;
 	public int col;	//col = column
